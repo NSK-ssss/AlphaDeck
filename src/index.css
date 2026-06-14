@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --color-brand-bg: #05070D;
+  --color-brand-sec-bg: #0A1020;
+  --color-brand-card: #0D1424;
+  --color-brand-glow: #0A4DFF;
+  --color-brand-primary: #FFFFFF;
+  --color-brand-secondary: #B4BCCF;
+  --color-brand-blue: #4F7CFF;
+  --color-brand-purple: #8B5CF6;
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #05070D;
+    color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #05070D;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glowing card accent overlay */
+.glow-card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(10, 77, 255, 0.06), transparent 40%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.glow-card-hover:hover::before {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05070D;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.20);
+}
